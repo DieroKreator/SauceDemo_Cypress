@@ -1,12 +1,12 @@
 describe('Shopping Cart Management', () => {
     beforeEach(() => {
         cy.visit('https://www.saucedemo.com/')
-    })
-
-    it('Validate the ability to add products to the shopping cart', () => {
         cy.get('#user-name').type("standard_user")
         cy.get('#password').type("secret_sauce")
         cy.get('#login-button').click()
+    })
+
+    it('Validate the ability to add products to the shopping cart', () => {
         cy.get('#item_4_title_link').should('have.text', 'Sauce Labs Backpack')
         cy.get('#add-to-cart-sauce-labs-backpack').click()
 
@@ -14,9 +14,6 @@ describe('Shopping Cart Management', () => {
     })
 
     it('Ensure users can manage items in the shopping cart', () => {
-        cy.get('#user-name').type("standard_user")
-        cy.get('#password').type("secret_sauce")
-        cy.get('#login-button').click()
         cy.get('#item_4_title_link').click()
         cy.get('div[data-test="inventory-item-name"]').should('have.text', 'Sauce Labs Backpack')
         cy.get('#add-to-cart').click()
